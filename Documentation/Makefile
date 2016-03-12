@@ -1,4 +1,4 @@
-NAME=graphics
+NAME=cloak
 
 TEXFILES=$(NAME).tex $(shell ./tex-dependencies $(NAME).tex)
 BIBFILES=$(NAME).bib
