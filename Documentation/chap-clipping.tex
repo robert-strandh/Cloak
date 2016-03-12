@@ -1,0 +1,27 @@
+\chapter{Clipping region}
+\label{chap-clipping-region}
+
+A \emph{clipping region} is an object that is used in order to limit
+rendering to a subset of all the pixels in the plane.  
+
+A clipping region can be seen as a simplified \emph{mask}.  Just like
+a mask, it defines \emph{opacity} values for each pixel in the plane.
+However, as opposed to a general mask, a clipping region defines each
+pixel as being either completely transparent or completely opaque.
+
+Furthermore, as opposed to a general mask, a clipping region is
+\emph{bounded}, which means that, except for a bounded number of
+pixels, it defines all pixels to be completely transparent.  This
+feature is used by the backends to restrict the area that has to be
+drawn.
+
+\Defprotoclass{clipping-region}
+
+This class is the protocol class for all clipping regions.
+
+\Defclass {rectangle}
+
+This class is a subclass of the class \texttt{clipping-region}.  It
+defines a rectangular clipping region that is orthogonal to the axes
+of the plane and which has integer coordinates.  All backends support
+this type of clipping region.
