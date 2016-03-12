@@ -22,3 +22,25 @@ horizontal and a vertical position, returns an opacity value.
 
 A mask of this type contains a set of triangles, defined by their
 corner coordinates.
+
+\Definitarg {:triangles}
+
+This initarg is used to supply a list of triangles (see below) that
+will define the mask.
+
+\Defclass {triangle}
+
+This class is not itself a mask type.  An instance of this class just
+contains three points in the plane.  A set (represented as a list) of
+such instances is used to create a triangle mask.  The order of the
+coordinates for the triangle corners in a triangle is not important.
+
+\Definitarg {:x1}
+\Definitarg {:y1}
+\Definitarg {:x2}
+\Definitarg {:y2}
+\Definitarg {:x3}
+\Definitarg {:y3}
+
+These initargs are accepted by all subclasses of the class
+\texttt{triangle}.
