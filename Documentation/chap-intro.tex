@@ -14,3 +14,18 @@ operations, while still allowing for client code to access
 backend-specific rendering primitives for highly performance-critical
 applications.
 
+The purpose of this work is thus \emph{not} to replace all
+backend-specific operations.  Instead, we allow for sophisticated
+applications to obtain objects that can then be used in
+backend-specific operations, thereby allowing such applications to
+implement performance-critical operations such as real-time animation,
+video rendering, etc.
+
+However, a large number of graphics operations that a library for
+graphic user interfaces needs to implement do not require very high
+performance, nor any sophisticated rendering primitives.  The
+operations defined here will allow such a library to define
+backend-independent code for drawing most typical gadgets such as
+buttons, scroll bars, menus, icons, etc.  Most importantly, it will
+also contain primitives that can be used to draw text.
+
