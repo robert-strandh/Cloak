@@ -1,0 +1,36 @@
+\chapter{Image}
+\label{chap-image}
+
+\Defprotoclass {image}
+
+An image is a supplier of color and opacity opacity values.  For each
+pixel in the plane, an image object is capable of supplying an value
+for each elementary color \emph{red}, \emph{green}, and \emph{blue},
+as well as an opacity value.  Different subclasses of this class have
+different representation.
+
+Different concrete subclasses of this class have different
+representation.
+
+All subclasses of this class can be arguments to the generic functions
+\texttt{width} and \texttt{height}.
+
+\Defclass {matrix-image}
+
+An image of this type contains explicit storage for each value
+inside a rectangular subset of the plane.  For pixels outside that
+rectangular subset, this image type supplies an opacity value of 0d0,
+i.e., totally transparent and a color value of 0d0 for each of the
+elementary colors.
+
+\Defclass {computed-image}
+
+An image of this type contains a functions that, given a horizontal
+and a vertical position return four values, one for each component of
+the pixel.
+
+\Defgeneric {image-from-mask-and-ink} {mask ink :key (x 0) (y 0)}
+
+Given a mask object and an ink object, return an image object suitable
+for drawing.
+
