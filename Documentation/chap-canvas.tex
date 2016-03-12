@@ -10,6 +10,14 @@ Each backend will define subclasses of this class, and each backend
 will have its proper methods of creating instances of its own canvas
 types.
 
+A canvas may or may not be a \emph{top-level} canvas.  A top-level
+canvas corresponds to a top-level window provided by the display
+server.  Whether or not the display server provides nested windows,
+\sysname{} allows the creation of a canvas that defines a sub-region
+of a top-level canvas.  It handles such canvases by translating
+coordinates and by restricting drawing operations to sub-regions of
+some top-level canvas.
+
 \Defmacro {with-canvas} {(canvas-var canvas-form) \body body}
 
 This macro is used to group several operations into a single final
