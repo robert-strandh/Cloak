@@ -1,0 +1,24 @@
+\chapter{Mask}
+
+\Defprotoclass {mask}
+
+A mask is a supplier of \emph{opacity} values.  For each pixel in the
+plane, a mask object is capable of supplying an opacity value.
+Different subclasses of this class have different representation.
+
+\Defclass {matrix-mask}
+
+A mask of this type contains explicit storage for each opacity value
+inside a rectangular subset of the plane.  For pixels outside that
+rectangular subset, this mask type supplies an opacity value of 0d0,
+i.e., totally transparent.
+
+\Defclass {computed-mask}
+
+A mask of this type contains a function that, when applied to a
+horizontal and a vertical position, returns an opacity value.
+
+\Defclass {triangle-mask}
+
+A mask of this type contains a set of triangles, defined by their
+corner coordinates.
