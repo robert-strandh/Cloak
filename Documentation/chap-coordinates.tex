@@ -1,0 +1,15 @@
+\chapter{Coordinate system}
+
+All drawing is accomplished in a left-handed two-dimensional
+coordinate system.  The $x$ coordinate grows to the right, and the $y$
+coordinate downward.
+
+A \emph{pixel} in a coordinate system is a quadratic area with both
+width and height of exactly one unit, and with the corners located on
+integer coordinates in the system.  For brevity, when we talk about
+the coordinates of a pixel, we only use two integer values, which then
+mean the coordinates of the upper-left corner of that pixel.
+
+An essential part of drawing is the concept of a \emph{triangle},
+which is defined by three coordinates in the coordinate system.  The
+type of these coordinates is \texttt{double-float}.
