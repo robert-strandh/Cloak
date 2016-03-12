@@ -1,0 +1,16 @@
+\chapter{Introduction}
+\pagenumbering{arabic}%
+
+The purpose of this work is to define a graphics layer that can be
+used by \commonlisp{} toolkits for creating graphic user interfaces.
+It can be thought of as an intermediate backend, sitting between the
+GUI toolkit itself and some concrete backend such as X11, OpenGL,
+Wayland, etc.
+
+The basis of this work is the recognition that most of the graphics
+operations of a graphics user interface are not performance critical.
+We can therefore afford to simplify the graphics model for such
+operations, while still allowing for client code to access
+backend-specific rendering primitives for highly performance-critical
+applications.
+
