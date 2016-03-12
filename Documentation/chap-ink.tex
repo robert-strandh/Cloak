@@ -7,6 +7,12 @@ An ink is a supplier of \emph{color}.  For each pixel in the plane, an
 ink object is capable of supplying a value each for the three
 elementary colors \emph{red}, \emph{blue}, and \emph{green}.
 
+Backends are allowed to treat ink instances as being immutable, so
+that it can create caches based on identity (in the sense of
+\texttt{eq}) of such instances.  Therefore, even though an ink object
+might be technically mutable, once it has been used in some operation
+defined here, it should no longer be modified.
+
 \Defclass {solid-ink}
 
 This class is a subclass of the class named \texttt{ink}.  It returns
