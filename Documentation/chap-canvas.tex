@@ -18,6 +18,19 @@ of a top-level canvas.  It handles such canvases by translating
 coordinates and by restricting drawing operations to sub-regions of
 some top-level canvas.
 
+\Defgeneric {restrict} {canvas clipping-region}
+
+Return a canvas that restricts drawing operations to
+\textit{clipping-region}.  The coordinate system of the new canvas is
+the same as that of \textit{canvas}.
+
+\Defgeneric {translate} {canvas dx dy}
+
+Return a canvas that has its coordinate system translated by a vector
+(\textit{dx},\textit{dy}) compared to the coordinate system of
+\textit{canvas}.%
+\fixme{Decide in which direction the translation goes.}
+
 \Defmacro {with-canvas} {(canvas-var canvas-form) \body body}
 
 This macro is used to group several operations into a single final
