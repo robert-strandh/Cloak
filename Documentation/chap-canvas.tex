@@ -7,3 +7,18 @@ This class is the protocol class of all objects that can be targets of
 drawing operations.
 
 \Defmacro {with-canvas} {(canvas-var canvas-form) \body body}
+
+This macro is used to group several operations into a single final
+rendering operation.
+
+The argument \textit{canvas-form} is a form that evaluated once.  It
+must evaluate to a canvas.
+
+The argument \textit{canvas-var} is a symbol.  It is not evaluated.
+In the body of the macro, this variable is bound to the result of
+evaluating \textit{canvas-form}.
+
+The \textit{body} can contain arbitrary forms, but the visible effect
+of drawing operations is suspended until the end of the macro call.
+Client code will typically wrap the entire event-handling machinery
+inside a call to this macro.
