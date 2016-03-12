@@ -1,0 +1,21 @@
+\chapter{Ink}
+\label{chap-ink}
+
+\Defprotoclass {ink}
+
+An ink is a supplier of \emph{color}.  For each pixel in the plane, an
+ink object is capable of supplying a value each for the three
+elementary colors \emph{red}, \emph{blue}, and \emph{green}.
+
+\Defclass {solid-ink}
+
+This class is a subclass of the class named \texttt{ink}.  It returns
+the same color values for every pixel in the plane.
+
+\Defclass {matrix-ink}
+
+Ink of this type contains explicit storage for each pixel value inside
+a rectangular subset of the plane.  For pixels outside that
+rectangular subset, some constant color values are supplied.
+
+\Defclass {computed-ink}
