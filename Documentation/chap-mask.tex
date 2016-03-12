@@ -6,6 +6,12 @@ A mask is a supplier of \emph{opacity} values.  For each pixel in the
 plane, a mask object is capable of supplying an opacity value.
 Different subclasses of this class have different representation.
 
+Backends are allowed to treat mask instances as being immutable, so
+that it can create caches based on identity (in the sense of
+\texttt{eq}) of mask instances.  Therefore, even though a mask object
+might be technically mutable, once it has been used in some operation
+defined here, it should no longer be modified.
+
 \Defclass {matrix-mask}
 
 A mask of this type contains explicit storage for each opacity value
