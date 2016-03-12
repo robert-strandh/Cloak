@@ -6,6 +6,10 @@
 This class is the protocol class of all objects that can be targets of
 drawing operations.
 
+Each backend will define subclasses of this class, and each backend
+will have its proper methods of creating instances of its own canvas
+types.
+
 \Defmacro {with-canvas} {(canvas-var canvas-form) \body body}
 
 This macro is used to group several operations into a single final
