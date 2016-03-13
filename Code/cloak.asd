@@ -4,4 +4,4 @@
   :depends-on (:acclimation)
   :serial t
   :components
-  ())
+  ((:file "packages")))
