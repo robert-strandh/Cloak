@@ -3,7 +3,8 @@
 (defpackage #:cloak
   (:use #:common-lisp)
   (:export #:canvas
-	   #:mask))
+	   #:mask
+	   #:triangle))
 
 (defpackage #:cloak-backend
   (:use #:common-lisp)
