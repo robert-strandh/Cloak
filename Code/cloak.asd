@@ -5,4 +5,5 @@
   :serial t
   :components
   ((:file "packages")
-   (:file "client-protocol")))
+   (:file "client-protocol")
+   (:file "triangle")))
