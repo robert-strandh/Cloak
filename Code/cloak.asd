@@ -6,5 +6,5 @@
   :components
   ((:file "packages")
    (:file "client-protocol")
-   (:file "mask")
-   (:file "triangle")))
+   (:file "triangle")
+   (:file "mask")))
