@@ -2,6 +2,7 @@
 
 (defpackage #:cloak
   (:use #:common-lisp)
+  (:shadow #:function)
   (:export #:canvas
 	   #:mask
 	   #:matrix-mask
