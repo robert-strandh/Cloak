@@ -71,3 +71,11 @@
 	     (incf (aref matrix (- y dy) (- x dx))
 		   (/ opacity 256d0))))
       (net.tuxee.aa:cells-sweep state #'add-opacity))))
+
+;;; A line is defined by two points <X1,Y1> and <X2,Y2>.  A point is
+;;; defined by <X,Y>.  This function returns a true value if the point
+;;; lies on one side of the line and false if the point lies on the
+;;; other side of the line.  It is assumed that the point does not lie
+;;; on the line.
+(defun point-side-of-line (x1 y1 x2 y2 x y)
+  (minusp (- (* (- x x1) (- y2 y1)) (* (- y y1) (- x2 x1)))))
