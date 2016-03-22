@@ -79,3 +79,8 @@
 ;;; on the line.
 (defun point-side-of-line (x1 y1 x2 y2 x y)
   (minusp (- (* (- x x1) (- y2 y1)) (* (- y y1) (- x2 x1)))))
+
+(defun render-vertices (x1 y1 x2 y2 x3 y3 matrix dx dy)
+  (if (point-side-of-line x1 y1 x2 y2 x3 y3)
+      (render-clockwise-vertices x1 y1 x3 y3 x2 y2 matrix dx dy)
+      (render-clockwise-vertices x1 y1 x2 y2 x3 y3 matrix dx dy)))
