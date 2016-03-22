@@ -7,3 +7,6 @@
 
 (defclass computed-mask (mask)
   ((%function :initarg :function :reader function)))
+
+(defclass triangle-mask (mask)
+  ((%triangles :initarg :triangles :reader triangles)))
