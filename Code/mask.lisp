@@ -106,6 +106,13 @@
   (loop for triangle in triangles
 	do (render-triangle triangle matrix dx dy)))
 
+(defun clamp-opacity-values (matrix)
+  (loop for row from 0 below (array-dimension matrix 0)
+	do (loop for col from 0 below (array-dimension matrix 1)
+		 for current-value = (aref matrix row col)
+		 do (setf (aref matrix row col)
+			  (max 0d0 (min 1d0 current-value))))))
+
 (defun triangle-mask-to-matrix-mask (triangle-mask)
   (multiple-value-bind (min-x min-y max-x max-y)
       (compute-extremes triangle-mask)
@@ -117,6 +124,7 @@
 	   (col-count (1+ (- max-x min-x)))
 	   (matrix (make-array (list row-count col-count))))
       (render-triangles (triangles triangle-mask) matrix min-x min-y)
+      (clamp-opacity-values matrix)
       (make-instance 'matrix-mask
 	:matrix matrix
 	:dx min-x
