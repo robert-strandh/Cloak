@@ -80,6 +80,12 @@
 (defun point-side-of-line (x1 y1 x2 y2 x y)
   (minusp (- (* (- x x1) (- y2 y1)) (* (- y y1) (- x2 x1)))))
 
+;;; Render the vertices of a triangle.  The vertices can be in
+;;; clockwise or counter-clockwise order as defined by the AA
+;;; libraries.  If they are in clockwise order, we just call the
+;;; function for rendering in clockwise order directly.  If they turn
+;;; out to be in counter-clockwise order, we swap two of the points
+;;; first.
 (defun render-vertices (x1 y1 x2 y2 x3 y3 matrix dx dy)
   (if (point-side-of-line x1 y1 x2 y2 x3 y3)
       (render-clockwise-vertices x1 y1 x3 y3 x2 y2 matrix dx dy)
