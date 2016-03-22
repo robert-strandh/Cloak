@@ -57,3 +57,17 @@
 	maximize (y2 triangle) into max-y
 	maximize (y3 triangle) into max-y
 	finally (return (values min-x min-y max-x max-y))))
+
+;;; Given three vertices of a triangle that are known to be in
+;;; clockwise order, render the triangle to the matrix.
+;;;
+;;; The clockwise order is defined as the AA library defines it.
+(defun render-clockwise-vertices (x1 y1 x2 y2 x3 y3 matrix dx dy)
+  (let ((state (net.tuxee.aa:make-state)))
+    (net.tuxee.aa:line-f state x1 y1 x2 y2)
+    (net.tuxee.aa:line-f state x2 y2 x3 y3)
+    (net.tuxee.aa:line-f state x3 y3 x1 y1)
+    (flet ((add-opacity (x y opacity)
+	     (incf (aref matrix (- y dy) (- x dx))
+		   (/ opacity 256d0))))
+      (net.tuxee.aa:cells-sweep state #'add-opacity))))
