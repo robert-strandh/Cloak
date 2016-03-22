@@ -1,7 +1,7 @@
 (cl:in-package #:asdf-user)
 
 (defsystem :cloak
-  :depends-on (:acclimation)
+  :depends-on (:acclimation :cl-vectors)
   :serial t
   :components
   ((:file "packages")
