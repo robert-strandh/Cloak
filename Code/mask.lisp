@@ -102,3 +102,6 @@
 		   dx
 		   dy))
 		   
+(defun render-triangles (triangles matrix dx dy)
+  (loop for triangle in triangles
+	do (render-triangle triangle matrix dx dy)))
