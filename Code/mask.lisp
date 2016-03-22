@@ -84,3 +84,15 @@
   (if (point-side-of-line x1 y1 x2 y2 x3 y3)
       (render-clockwise-vertices x1 y1 x3 y3 x2 y2 matrix dx dy)
       (render-clockwise-vertices x1 y1 x2 y2 x3 y3 matrix dx dy)))
+
+(defun render-triangle (triangle matrix dx dy)
+  (render-vertices (x1 triangle)
+		   (y1 triangle)
+		   (x2 triangle)
+		   (y2 triangle)
+		   (x3 triangle)
+		   (y3 triangle)
+		   matrix
+		   dx
+		   dy))
+		   
