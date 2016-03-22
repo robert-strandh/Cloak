@@ -105,3 +105,19 @@
 (defun render-triangles (triangles matrix dx dy)
   (loop for triangle in triangles
 	do (render-triangle triangle matrix dx dy)))
+
+(defun triangle-mask-to-matrix-mask (triangle-mask)
+  (multiple-value-bind (min-x min-y max-x max-y)
+      (compute-extremes triangle-mask)
+    (setf min-x (floor min-x)
+	  min-y (floor min-y)
+	  max-x (ceiling max-x)
+	  max-y (ceiling max-y))
+    (let* ((row-count (1+ (- max-y min-y)))
+	   (col-count (1+ (- max-x min-x)))
+	   (matrix (make-array (list row-count col-count))))
+      (render-triangles (triangles triangle-mask) matrix min-x min-y)
+      (make-instance 'matrix-mask
+	:matrix matrix
+	:dx min-x
+	:dy min-y))))
