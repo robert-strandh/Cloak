@@ -44,19 +44,19 @@
 ;;; list of triangles in TRIANGLE-MASK.
 (defun compute-extremes (triangle-mask)
   (loop for triangle in (triangles triangle-mask)
-	minimize (x1 triangle) into min-x
-	minimize (x2 triangle) into min-x
-	minimize (x3 triangle) into min-x
-	maximize (x1 triangle) into max-x
-	maximize (x2 triangle) into max-x
-	maximize (x3 triangle) into max-x
-	minimize (y1 triangle) into min-y
-	minimize (y2 triangle) into min-y
-	minimize (y3 triangle) into min-y
-	maximize (y1 triangle) into max-y
-	maximize (y2 triangle) into max-y
-	maximize (y3 triangle) into max-y
-	finally (return (values min-x min-y max-x max-y))))
+        minimize (x1 triangle) into min-x
+        minimize (x2 triangle) into min-x
+        minimize (x3 triangle) into min-x
+        maximize (x1 triangle) into max-x
+        maximize (x2 triangle) into max-x
+        maximize (x3 triangle) into max-x
+        minimize (y1 triangle) into min-y
+        minimize (y2 triangle) into min-y
+        minimize (y3 triangle) into min-y
+        maximize (y1 triangle) into max-y
+        maximize (y2 triangle) into max-y
+        maximize (y3 triangle) into max-y
+        finally (return (values min-x min-y max-x max-y))))
 
 ;;; Given three vertices of a triangle that are known to be in
 ;;; clockwise order, render the triangle to the matrix.
@@ -68,8 +68,8 @@
     (net.tuxee.aa:line-f state x2 y2 x3 y3)
     (net.tuxee.aa:line-f state x3 y3 x1 y1)
     (flet ((add-opacity (x y opacity)
-	     (incf (aref matrix (- y dy) (- x dx))
-		   (/ opacity 256d0))))
+             (incf (aref matrix (- y dy) (- x dx))
+                   (/ opacity 256d0))))
       (net.tuxee.aa:cells-sweep state #'add-opacity))))
 
 ;;; A line is defined by two points <X1,Y1> and <X2,Y2>.  A point is
@@ -93,39 +93,39 @@
 
 (defun render-triangle (triangle matrix dx dy)
   (render-vertices (x1 triangle)
-		   (y1 triangle)
-		   (x2 triangle)
-		   (y2 triangle)
-		   (x3 triangle)
-		   (y3 triangle)
-		   matrix
-		   dx
-		   dy))
-		   
+                   (y1 triangle)
+                   (x2 triangle)
+                   (y2 triangle)
+                   (x3 triangle)
+                   (y3 triangle)
+                   matrix
+                   dx
+                   dy))
+                   
 (defun render-triangles (triangles matrix dx dy)
   (loop for triangle in triangles
-	do (render-triangle triangle matrix dx dy)))
+        do (render-triangle triangle matrix dx dy)))
 
 (defun clamp-opacity-values (matrix)
   (loop for row from 0 below (array-dimension matrix 0)
-	do (loop for col from 0 below (array-dimension matrix 1)
-		 for current-value = (aref matrix row col)
-		 do (setf (aref matrix row col)
-			  (max 0d0 (min 1d0 current-value))))))
+        do (loop for col from 0 below (array-dimension matrix 1)
+                 for current-value = (aref matrix row col)
+                 do (setf (aref matrix row col)
+                          (max 0d0 (min 1d0 current-value))))))
 
 (defun triangle-mask-to-matrix-mask (triangle-mask)
   (multiple-value-bind (min-x min-y max-x max-y)
       (compute-extremes triangle-mask)
     (setf min-x (floor min-x)
-	  min-y (floor min-y)
-	  max-x (ceiling max-x)
-	  max-y (ceiling max-y))
+          min-y (floor min-y)
+          max-x (ceiling max-x)
+          max-y (ceiling max-y))
     (let* ((row-count (1+ (- max-y min-y)))
-	   (col-count (1+ (- max-x min-x)))
-	   (matrix (make-array (list row-count col-count))))
+           (col-count (1+ (- max-x min-x)))
+           (matrix (make-array (list row-count col-count))))
       (render-triangles (triangles triangle-mask) matrix min-x min-y)
       (clamp-opacity-values matrix)
       (make-instance 'matrix-mask
-	:matrix matrix
-	:dx min-x
-	:dy min-y))))
+        :matrix matrix
+        :dx min-x
+        :dy min-y))))
