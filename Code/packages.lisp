@@ -4,9 +4,9 @@
   (:use #:common-lisp)
   (:shadow #:function)
   (:export #:canvas
-	   #:mask
-	   #:matrix-mask
-	   #:triangle))
+           #:mask
+           #:matrix-mask
+           #:triangle))
 
 (defpackage #:cloak-backend
   (:use #:common-lisp)
