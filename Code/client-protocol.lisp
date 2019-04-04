@@ -5,3 +5,5 @@
 (defclass canvas () ())
 
 (defclass triangle () ())
+
+(defclass mask () ())
